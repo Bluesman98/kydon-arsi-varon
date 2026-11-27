@@ -54,8 +54,8 @@ content:
           values: [Άνδρες, Γυναίκες, Νέοι, Νέες, Έφηβοι, Νεάνιδες, Παίδες, Κορασίδες]
       - { name: weightClass, label: Κατηγορία βάρους (κ.), type: string, description: "π.χ. 63 ή +86" }
       - { name: photo, label: Φωτογραφία, type: image, description: "Για ανήλικους χρειάζεται συναίνεση γονέα." }
-      - { name: snatch, label: Καλύτερο αρασέ (κ.), type: number }
-      - { name: cleanJerk, label: Καλύτερο επιθετικό (κ.), type: number }
+      - { name: snatch, label: Καλύτερο Αρασέ (κ.), type: number }
+      - { name: cleanJerk, label: Καλύτερο Επολέ- Ζετέ (κ.), type: number }
       - { name: order, label: Σειρά εμφάνισης, type: number, default: 99 }
       - { name: body, label: Βιογραφικό, type: rich-text }
 
@@ -125,6 +125,8 @@ content:
       - { name: sectionName, label: Όνομα τμήματος, type: string }
       - { name: founded, label: Έτος ίδρυσης, type: number }
       - { name: intro, label: Κείμενο αρχικής σελίδας, type: text }
+      - { name: homePhoto, label: Φωτογραφία αρχικής, type: image, description: "Οριζόντια φωτογραφία, τουλάχιστον 1600px πλάτος. Αφήστε κενό για να μην εμφανίζεται. Για ανήλικους χρειάζεται συναίνεση γονέα." }
+      - { name: homePhotoCaption, label: Λεζάντα φωτογραφίας αρχικής, type: string, description: "π.χ. Προπονητές και αθλητές του τμήματος, 2026" }
       - { name: address, label: Διεύθυνση, type: string }
       - { name: venue, label: Χώρος προπόνησης, type: string }
       - { name: mapLink, label: Σύνδεσμος Google Maps, type: string }

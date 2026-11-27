@@ -8,6 +8,7 @@ Informational website for the weightlifting section (Τμήμα Άρσης Βα�
 - **Lowest cost:** Astro static site → GitHub Pages (free) + a custom domain (the only cost). Deployed by `.github/workflows/deploy.yml` on push to `main`.
 - **Editing by non-developers** through Pages CMS (https://app.pagescms.org), configured in `.pages.yml` with Greek labels. Editors need GitHub accounts.
 - **Branding:** use the club's own logo (Kydon coin emblem, `public/kydon-emblem.png` cropped from `public/kydon-logo-full.png`), not the Municipality of Chania press-kit files. Colours come from the team uniform: dark navy with red stripes. The double red stripe is the recurring motif. Logo blue is about #204080.
+- **Colours not final yet.** A temporary header button switches between the current navy/red and a white + #0C3B8D palette (`data-palette="blue"`, saved in localStorage). Once one is chosen, make it the `:root` default and remove the blocks marked TEMPORARY in `src/styles/global.css` and `src/layouts/Layout.astro`.
 - **Fonts** must support Greek: Fira Sans Extra Condensed (display), Commissioner (body), JetBrains Mono (numbers/labels).
 - **Training times** are shown on the Contact page as information only.
 - **GDPR:** athletes under 18 need parental consent before their name or photo is published.

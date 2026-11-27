@@ -20,6 +20,15 @@ const articles = (await getCollection('articles', ({ data }) => !data.draft))
     </div>
   </section>
 
+  {club.homePhoto && (
+    <section class="team-photo">
+      <figure class="wrap">
+        <img src={url(club.homePhoto)} alt={club.homePhotoCaption || `Προπονητές και αθλητές του τμήματος ${club.sectionName}`} loading="eager">
+        {club.homePhotoCaption && <figcaption>{club.homePhotoCaption}</figcaption>}
+      </figure>
+    </section>
+  )}
+
   <section>
     <div class="wrap">
       <div class="entries">
