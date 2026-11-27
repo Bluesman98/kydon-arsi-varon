@@ -100,14 +100,14 @@ nav.links a[aria-current="page"] { opacity: 1; background: var(--band-accent); c
 }
 
 /* Hero (home) */
-.hero { background: var(--navy); color: var(--navy-ink); position: relative; overflow: hidden; padding-block: clamp(3rem, 8vw, 6rem); }
-.hero::after { content: ""; position: absolute; top: -20%; bottom: -20%; right: 6%; width: 120px; background: linear-gradient(90deg, var(--band-accent) 0 34%, transparent 34% 66%, var(--band-accent) 66%); transform: skewX(-18deg); opacity: 0.9; }
-.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: auto 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
-.hero .emblem { width: clamp(140px, 22vw, 230px); aspect-ratio: 1; border-radius: 50%; background: #fff; padding: 6px; box-shadow: 0 0 0 6px var(--navy-2); }
-.hero h1 { font-size: clamp(3.2rem, 11vw, 7.5rem); font-weight: 800; line-height: 0.9; }
-.hero h1 span { display: block; font-size: 0.32em; font-weight: 600; letter-spacing: 0.08em; opacity: 0.8; margin-top: 0.6rem; }
-.hero p { margin-top: 1.4rem; max-width: 52ch; font-size: 1.12rem; opacity: 0.88; }
-@media (max-width: 700px) { .hero .wrap { grid-template-columns: 1fr; } .hero::after { right: -30px; width: 80px; } }
+.hero { background: var(--navy); color: var(--navy-ink); position: relative; overflow: hidden; padding-block: clamp(1.75rem, 4vw, 3rem); }
+.hero::after { content: ""; position: absolute; top: -20%; bottom: -20%; right: 6%; width: 90px; background: linear-gradient(90deg, var(--band-accent) 0 34%, transparent 34% 66%, var(--band-accent) 66%); transform: skewX(-18deg); opacity: 0.9; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: auto 1fr; gap: clamp(1rem, 3vw, 2.25rem); align-items: center; }
+.hero .emblem { width: clamp(76px, 12vw, 150px); aspect-ratio: 1; border-radius: 50%; background: #fff; padding: 4px; box-shadow: 0 0 0 4px var(--navy-2); }
+.hero h1 { font-size: clamp(2.3rem, 7vw, 4.75rem); font-weight: 800; line-height: 0.9; }
+.hero h1 span { display: block; font-size: max(0.38em, 0.85rem); font-weight: 600; letter-spacing: 0.08em; opacity: 0.8; margin-top: 0.45rem; }
+.hero p { margin-top: 0.9rem; max-width: 60ch; font-size: 1.02rem; opacity: 0.88; }
+@media (max-width: 700px) { .hero .wrap { align-items: start; } .hero p { font-size: 0.95rem; } .hero::after { right: -30px; width: 80px; } }
 
 /* Inner page header */
 .page-head { background: var(--navy); color: var(--navy-ink); padding-block: clamp(2.5rem, 6vw, 4rem); position: relative; overflow: hidden; }
