@@ -1,5 +1,5 @@
 ---
-name: Νίκος Κλωθeastwood
+name: "Κύριος Νίκος "
 role: "Καουμπόι - Φανατικος Καπνιστής "
 photo: /uploads/image_2026-11-27_154043636.png
 order: 99
