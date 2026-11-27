@@ -1,0 +1,135 @@
+# Editing panel config for Pages CMS (https://pagescms.org)
+media:
+  input: public/uploads
+  output: /uploads
+  extensions: [jpg, jpeg, png, webp, gif]
+
+content:
+  - name: articles
+    label: Νέα
+    type: collection
+    path: src/content/articles
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, draft]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Τίτλος, type: string, required: true }
+      - { name: date, label: Ημερομηνία, type: date, required: true }
+      - { name: cover, label: Κεντρική φωτογραφία, type: image }
+      - { name: summary, label: Σύντομη περίληψη, type: text, description: "Μία ή δύο προτάσεις που εμφανίζονται στη λίστα των νέων." }
+      - { name: draft, label: Πρόχειρο (δεν εμφανίζεται), type: boolean, default: false }
+      - { name: body, label: Κείμενο, type: rich-text }
+
+  - name: coaches
+    label: Προπονητές
+    type: collection
+    path: src/content/coaches
+    filename: "{primary}.md"
+    view:
+      fields: [name, role, order]
+    fields:
+      - { name: name, label: Ονοματεπώνυμο, type: string, required: true }
+      - { name: role, label: Ρόλος, type: string, required: true, description: "π.χ. Προπονητής · Υπεύθυνος τμήματος" }
+      - { name: photo, label: Φωτογραφία, type: image }
+      - { name: order, label: Σειρά εμφάνισης, type: number, default: 99 }
+      - { name: body, label: Βιογραφικό, type: rich-text }
+
+  - name: athletes
+    label: Αθλητές
+    type: collection
+    path: src/content/athletes
+    filename: "{primary}.md"
+    view:
+      fields: [name, category, weightClass]
+    fields:
+      - { name: name, label: Ονοματεπώνυμο, type: string, required: true }
+      - name: category
+        label: Κατηγορία
+        type: select
+        required: true
+        options:
+          values: [Άνδρες, Γυναίκες, Νέοι, Νέες, Έφηβοι, Νεάνιδες, Παίδες, Κορασίδες]
+      - { name: weightClass, label: Κατηγορία βάρους (κ.), type: string, description: "π.χ. 63 ή +86" }
+      - { name: photo, label: Φωτογραφία, type: image, description: "Για ανήλικους χρειάζεται συναίνεση γονέα." }
+      - { name: snatch, label: Καλύτερο αρασέ (κ.), type: number }
+      - { name: cleanJerk, label: Καλύτερο επιθετικό (κ.), type: number }
+      - { name: order, label: Σειρά εμφάνισης, type: number, default: 99 }
+      - { name: body, label: Βιογραφικό, type: rich-text }
+
+  - name: history
+    label: Ιστορία
+    type: file
+    path: src/content/pages/istoria.md
+    fields:
+      - { name: title, label: Τίτλος, type: string, required: true }
+      - { name: intro, label: Εισαγωγή, type: text }
+      - { name: placeholder, label: Εμφάνιση σημείωσης «προσωρινό κείμενο», type: boolean }
+      - { name: body, label: Κείμενο, type: rich-text }
+
+  - name: records
+    label: Διακρίσεις & ρεκόρ
+    type: file
+    path: src/data/records.json
+    format: json
+    fields:
+      - { name: note, label: Σημείωση (αφήστε κενό για να μην εμφανίζεται), type: string }
+      - name: honours
+        label: Διακρίσεις
+        type: object
+        list: true
+        fields:
+          - { name: year, label: Έτος, type: string }
+          - { name: text, label: Διάκριση, type: string }
+      - name: women
+        label: Ρεκόρ γυναικών
+        type: object
+        list: true
+        fields: &recordFields
+          - { name: weightClass, label: Κατηγορία, type: string }
+          - { name: lifter, label: Αθλητής, type: string }
+          - { name: snatch, label: Αρασέ, type: number }
+          - { name: cleanJerk, label: Επιθετικό, type: number }
+      - name: men
+        label: Ρεκόρ ανδρών
+        type: object
+        list: true
+        fields: *recordFields
+
+  - name: schedule
+    label: Ώρες προπόνησης
+    type: file
+    path: src/data/schedule.json
+    format: json
+    fields:
+      - { name: note, label: Σημείωση (αφήστε κενό για να μην εμφανίζεται), type: string }
+      - name: rows
+        label: Τμήματα
+        type: object
+        list: true
+        fields:
+          - { name: group, label: Τμήμα, type: string }
+          - { name: days, label: Ημέρες, type: string }
+          - { name: time, label: Ώρα, type: string }
+
+  - name: club
+    label: Στοιχεία συλλόγου
+    type: file
+    path: src/data/club.json
+    format: json
+    fields:
+      - { name: name, label: Όνομα συλλόγου, type: string, required: true }
+      - { name: shortName, label: Σύντομο όνομα, type: string }
+      - { name: sectionName, label: Όνομα τμήματος, type: string }
+      - { name: founded, label: Έτος ίδρυσης, type: number }
+      - { name: intro, label: Κείμενο αρχικής σελίδας, type: text }
+      - { name: address, label: Διεύθυνση, type: string }
+      - { name: venue, label: Χώρος προπόνησης, type: string }
+      - { name: mapLink, label: Σύνδεσμος Google Maps, type: string }
+      - { name: phone, label: Τηλέφωνο, type: string }
+      - { name: email, label: Email, type: string }
+      - { name: facebook, label: Facebook (σύνδεσμος), type: string }
+      - { name: instagram, label: Instagram (σύνδεσμος), type: string }
+      - { name: mainSite, label: Ιστοσελίδα συλλόγου, type: string }

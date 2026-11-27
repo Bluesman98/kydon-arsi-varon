@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+import { url, initials, CATEGORIES } from '../lib/url';
+
+const byOrder = (a: any, b: any) => a.data.order - b.data.order || a.data.name.localeCompare(b.data.name, 'el');
+const withContent = async (list: any[]) =>
+  Promise.all(list.sort(byOrder).map(async (e) => ({ ...e, Content: (await render(e)).Content })));
+
+const coaches = await withContent(await getCollection('coaches'));
+const athletes = await withContent(await getCollection('athletes'));
+const groups = CATEGORIES.map((cat) => ({ cat, list: athletes.filter((a) => a.data.category === cat) })).filter((g) => g.list.length);
+---
+<Layout title="Άνθρωποι" description="Οι προπονητές και οι αθλητές του τμήματος άρσης βαρών.">
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Άνθρωποι</span>
+      <h1>Η ομάδα μας</h1>
+      <p>Οι προπονητές και οι αθλητές του τμήματος άρσης βαρών.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="stripe" aria-hidden="true"></div>
+        <h2>Προπονητές</h2>
+      </div>
+      <div class="people">
+        {coaches.map((c) => (
+          <article class="person">
+            <div class={`portrait${c.data.photo ? '' : ' empty'}`}>
+              {c.data.photo ? <img src={url(c.data.photo)} alt={c.data.name} loading="lazy" /> : initials(c.data.name)}
+            </div>
+            <h3>{c.data.name}</h3>
+            <span class="role">{c.data.role}</span>
+            <div class="bio"><c.Content /></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:0">
+        <div class="stripe" aria-hidden="true"></div>
+        <h2>Αθλητές</h2>
+      </div>
+      {groups.map((g) => (
+        <>
+          <div class="group-title"><h3>{g.cat}</h3><span>{g.list.length}</span></div>
+          <div class="people">
+            {g.list.map((a) => (
+              <article class="person">
+                <div class={`portrait${a.data.photo ? '' : ' empty'}`}>
+                  {a.data.photo ? <img src={url(a.data.photo)} alt={a.data.name} loading="lazy" /> : initials(a.data.name)}
+                </div>
+                <h3>{a.data.name}</h3>
+                <span class="role">{a.data.category}{a.data.weightClass ? ` · ${a.data.weightClass} κ.` : ''}</span>
+                {(a.data.snatch || a.data.cleanJerk) && (
+                  <div class="prs">
+                    {a.data.snatch && <span>Αρασέ <b>{a.data.snatch}</b></span>}
+                    {a.data.cleanJerk && <span>Επιθετικό <b>{a.data.cleanJerk}</b></span>}
+                    {a.data.snatch && a.data.cleanJerk && <span>Σύνολο <b>{a.data.snatch + a.data.cleanJerk}</b></span>}
+                  </div>
+                )}
+                <div class="bio"><a.Content /></div>
+              </article>
+            ))}
+          </div>
+        </>
+      ))}
+    </div>
+  </section>
+</Layout>

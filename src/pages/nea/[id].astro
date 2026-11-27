@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+import { url, formatDate } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', ({ data }) => !data.draft);
+  return articles.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, date, cover, summary } = entry.data;
+---
+<Layout title={title} description={summary ?? undefined} image={cover}>
+  <section>
+    <div class="wrap">
+      <article class="article">
+        <div class="article-head">
+          <a class="back" href={url('/nea/')}>← Όλα τα νέα</a>
+          <time datetime={date.toISOString()}>{formatDate(date)}</time>
+          <h1>{title}</h1>
+          {summary && <p class="lede">{summary}</p>}
+        </div>
+        {cover && <div class="cover" style="max-width:68ch"><img src={url(cover)} alt="" /></div>}
+        <div class="prose"><Content /></div>
+      </article>
+    </div>
+  </section>
+</Layout>

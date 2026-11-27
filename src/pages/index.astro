@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NewsCard from '../components/NewsCard.astro';
+import { getCollection } from 'astro:content';
+import club from '../data/club.json';
+import { url } from '../lib/url';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+<Layout>
+  <section class="hero">
+    <div class="wrap">
+      <img class="emblem" src={url('/kydon-emblem.png')} alt={`Σήμα του ${club.name}`} width="230" height="230">
+      <div>
+        <h1>{club.sectionName}<span>{club.name} · από το {club.founded}</span></h1>
+        <p>{club.intro}</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="entries">
+        <a class="entry" href={url('/istoria/')}>
+          <span class="eyebrow">Από το {club.founded}</span>
+          <h3>Η ιστορία μας</h3>
+          <p>Ο Κύδων, το τμήμα άρσης βαρών, οι διακρίσεις και τα ρεκόρ του συλλόγου.</p>
+          <span class="go">Διαβάστε →</span>
+        </a>
+        <a class="entry" href={url('/anthropoi/')}>
+          <span class="eyebrow">Προπονητές & αθλητές</span>
+          <h3>Οι άνθρωποι</h3>
+          <p>Γνωρίστε τους προπονητές και τους αθλητές μας, από τους παίδες ως τους άνδρες και τις γυναίκες.</p>
+          <span class="go">Δείτε την ομάδα →</span>
+        </a>
+        <a class="entry" href={url('/to-athlima/')}>
+          <span class="eyebrow">Αρασέ & επιθετικό</span>
+          <h3>Το άθλημα</h3>
+          <p>Πώς γίνεται ένας αγώνας, κατηγορίες βάρους και ηλικίας, εξοπλισμός και η ελληνική παράδοση.</p>
+          <span class="go">Μάθετε περισσότερα →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {articles.length > 0 && (
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="stripe" aria-hidden="true"></div>
+          <h2>Νέα</h2>
+        </div>
+        <div class="news-grid">
+          {articles.map((a) => <NewsCard id={a.id} {...a.data} />)}
+        </div>
+        <a class="more-link" href={url('/nea/')}>Όλα τα νέα →</a>
+      </div>
+    </section>
+  )}
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="entries" style="grid-template-columns:1fr">
+        <a class="entry" href={url('/epikoinonia/')}>
+          <span class="eyebrow">Επικοινωνία</span>
+          <h3>{club.address}</h3>
+          <p>Τηλέφωνο {club.phone}. Δείτε τις ώρες προπόνησης και πώς θα μας βρείτε.</p>
+          <span class="go">Στοιχεία επικοινωνίας →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

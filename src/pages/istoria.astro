@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry, render } from 'astro:content';
+import records from '../data/records.json';
+
+const page = (await getEntry('pages', 'istoria'))!;
+const { Content } = await render(page);
+const boards: [string, any[]][] = [['Γυναίκες', records.women], ['Άνδρες', records.men]];
+---
+<Layout title={page.data.title} description={page.data.intro ?? undefined}>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Ιστορία</span>
+      <h1>{page.data.title}</h1>
+      {page.data.intro && <p>{page.data.intro}</p>}
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      {page.data.placeholder && <p class="placeholder-note" style="margin-bottom:2rem">Μέρος του κειμένου είναι προσωρινό και περιμένει την ιστορία του τμήματος.</p>}
+      <div class="prose"><Content /></div>
+    </div>
+  </section>
+
+  {records.honours.length > 0 && (
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="stripe" aria-hidden="true"></div>
+          <h2>Διακρίσεις</h2>
+        </div>
+        <ul class="honours">
+          {records.honours.map((h) => <li><b>{h.year}</b><span>{h.text}</span></li>)}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="stripe" aria-hidden="true"></div>
+        <h2>Ρεκόρ συλλόγου</h2>
+        <p class="lede">Οι καλύτερες επιδόσεις αθλητών του Κύδωνα σε επίσημους αγώνες, σε κιλά.</p>
+      </div>
+      <div class="records-wrap">
+        {boards.map(([label, rows]) => (
+          <div class="board">
+            <h3>{label}</h3>
+            <table>
+              <thead><tr><th>Κατ.</th><th>Αθλητής</th><th>Αρασέ</th><th>Επιθ.</th><th>Σύνολο</th></tr></thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr><td>{r.weightClass}</td><td>{r.lifter}</td><td>{r.snatch}</td><td>{r.cleanJerk}</td><td class="total">{(r.snatch || 0) + (r.cleanJerk || 0)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
+      </div>
+      {records.note && <p class="placeholder-note" style="margin-top:1.2rem">{records.note}</p>}
+    </div>
+  </section>
+</Layout>

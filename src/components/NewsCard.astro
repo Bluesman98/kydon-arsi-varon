@@ -1,0 +1,13 @@
+---
+import { url, formatDate } from '../lib/url';
+interface Props { id: string; title: string; date: Date; cover?: string | null; summary?: string | null }
+const { id, title, date, cover, summary } = Astro.props;
+---
+<a class="news-card" href={url(`/nea/${id}/`)}>
+  <div class={`cover${cover ? '' : ' empty'}`}>
+    {cover && <img src={url(cover)} alt="" loading="lazy" />}
+  </div>
+  <time datetime={date.toISOString()}>{formatDate(date)}</time>
+  <h3>{title}</h3>
+  {summary && <p>{summary}</p>}
+</a>

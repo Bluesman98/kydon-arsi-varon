@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const menClasses = ['60', '65', '71', '79', '88', '94', '110', '+110'];
+const womenClasses = ['48', '53', '58', '63', '69', '77', '86', '+86'];
+const plates = [
+  { kg: '25', c: '--p-red', light: true }, { kg: '20', c: '--p-blue', light: true },
+  { kg: '15', c: '--p-yellow' }, { kg: '10', c: '--p-green', light: true }, { kg: '5', c: '--p-white' },
+  { kg: '2,5', c: '--p-red', light: true }, { kg: '2', c: '--p-blue', light: true },
+  { kg: '1,5', c: '--p-yellow' }, { kg: '1', c: '--p-green', light: true }, { kg: '0,5', c: '--p-white' },
+];
+---
+<Layout title="Το Άθλημα" description="Τι είναι η άρση βαρών: αρασέ και επιθετικό, κανόνες αγώνων, κατηγορίες βάρους και ηλικίας, εξοπλισμός και ιστορία.">
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Το Άθλημα</span>
+      <h1>Τι είναι η άρση βαρών</h1>
+      <p>Ολυμπιακό άθλημα δύναμης, ταχύτητας και τεχνικής. Ο αθλητής σηκώνει τη μπάρα πάνω από το κεφάλι με δύο τρόπους: το αρασέ και το επιθετικό.</p>
+      <nav class="toc" aria-label="Περιεχόμενα">
+        <a href="#agonismata">Τα αγωνίσματα</a>
+        <a href="#agonas">Ο αγώνας</a>
+        <a href="#kategories">Κατηγορίες</a>
+        <a href="#exoplismos">Εξοπλισμός</a>
+        <a href="#istoria">Ιστορία</a>
+      </nav>
+    </div>
+  </div>
+
+  <section id="agonismata">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="stripe" aria-hidden="true"></div>
+        <h2>Τα δύο αγωνίσματα</h2>
+      </div>
+      <div class="lifts">
+        <article class="lift">
+          <span class="en">Snatch</span>
+          <h3>Αρασέ</h3>
+          <p>Η μπάρα σηκώνεται από το έδαφος πάνω από το κεφάλι, με τεντωμένα χέρια, σε μία συνεχή κίνηση. Είναι η πιο γρήγορη και τεχνική άσκηση του αθλήματος.</p>
+          <ol>
+            <li>Φαρδιά λαβή, η μπάρα ξεκινά από το πάτωμα</li>
+            <li>Έκρηξη από τα πόδια και τους γοφούς</li>
+            <li>Ο αθλητής «πέφτει» κάτω από τη μπάρα σε βαθύ κάθισμα</li>
+            <li>Σηκώνεται όρθιος και κρατά τη μπάρα ακίνητη</li>
+          </ol>
+        </article>
+        <article class="lift">
+          <span class="en">Clean &amp; Jerk</span>
+          <h3>Επιθετικό</h3>
+          <p>Γίνεται σε δύο φάσεις. Σε αυτό σηκώνονται τα μεγαλύτερα βάρη του αθλήματος.</p>
+          <ol>
+            <li><strong>Σήκωμα:</strong> η μπάρα έρχεται από το πάτωμα στους ώμους, συνήθως με κάθισμα</li>
+            <li>Ο αθλητής σηκώνεται όρθιος με τη μπάρα στο στήθος</li>
+            <li><strong>Ώθηση:</strong> με ώθηση των ποδιών η μπάρα πάει πάνω από το κεφάλι, συχνά με ψαλίδι</li>
+            <li>Ο αθλητής ενώνει τα πόδια και κρατά τη μπάρα ακίνητη</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="agonas" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="stripe" aria-hidden="true"></div>
+        <h2>Πώς γίνεται ένας αγώνας</h2>
+        <p class="lede">Οι αθλητές αγωνίζονται ανά φύλο και κατηγορία βάρους. Νικητής είναι όποιος σηκώσει το μεγαλύτερο σύνολο.</p>
+      </div>
+      <div class="rules">
+        <div class="rule"><b>3 + 3</b><p>Τρεις προσπάθειες στο αρασέ και τρεις στο επιθετικό.</p></div>
+        <div class="rule"><b>Σύνολο</b><p>Μετράει η καλύτερη επιτυχημένη προσπάθεια σε κάθε άσκηση. Το άθροισμά τους είναι το σύνολο.</p></div>
+        <div class="rule"><b>+1 κ.</b><p>Το βάρος στη μπάρα μόνο ανεβαίνει, κατά τουλάχιστον ένα κιλό.</p></div>
+        <div class="rule"><b>3 κριτές</b><p>Λευκό φως σημαίνει έγκυρη προσπάθεια, κόκκινο άκυρη. Χρειάζονται τουλάχιστον δύο λευκά.</p></div>
+        <div class="rule"><b>1′</b><p>Ο αθλητής έχει ένα λεπτό για κάθε προσπάθεια, δύο όταν κάνει δύο διαδοχικές.</p></div>
+        <div class="rule"><b>0</b><p>Όποιος δεν πετύχει καμία προσπάθεια σε μία άσκηση δεν βγάζει σύνολο.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kategories" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="stripe" aria-hidden="true"></div>
+        <h2>Κατηγορίες</h2>
+        <p class="lede">Οι αθλητές ζυγίζονται πριν από τον αγώνα και αγωνίζονται με όσους έχουν παρόμοιο σωματικό βάρος.</p>
+      </div>
+      <div class="classes">
+        <div><h3>Γυναίκες</h3><div class="class-row">{womenClasses.map((c) => <span>{c} κ.</span>)}</div></div>
+        <div><h3>Άνδρες</h3><div class="class-row">{menClasses.map((c) => <span>{c} κ.</span>)}</div></div>
+      </div>
+      <p class="lede" style="margin-top:1rem;font-size:.95rem">Κατηγορίες ενηλίκων της Διεθνούς Ομοσπονδίας (IWF) από τον Ιούνιο του 2025. Οι μικρότερες ηλικίες έχουν δικές τους κατηγορίες.</p>
+
+      <h3 style="margin:2.5rem 0 1rem">Ηλικιακές κατηγορίες</h3>
+      <div class="ages">
+        <table>
+          <thead><tr><th>Αγόρια / Άνδρες</th><th>Κορίτσια / Γυναίκες</th><th>Περίπου</th></tr></thead>
+          <tbody>
+            <tr><td>Παίδες</td><td>Κορασίδες</td><td>Οι μικρότερες ηλικίες, έως 15 ετών</td></tr>
+            <tr><td>Έφηβοι</td><td>Νεάνιδες</td><td>Έως 17 ετών</td></tr>
+            <tr><td>Νέοι</td><td>Νέες</td><td>Έως 20 ετών</td></tr>
+            <tr><td>Άνδρες</td><td>Γυναίκες</td><td>Από 15 ετών και πάνω</td></tr>
+            <tr><td colspan="2">Βετεράνοι (Masters)</td><td>Από 35 ετών και πάνω</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede" style="margin-top:1rem;font-size:.95rem">Τα ακριβή όρια ηλικίας ορίζονται από την Ελληνική Ομοσπονδία Άρσης Βαρών για κάθε αγωνιστική χρονιά.</p>
+    </div>
+  </section>
+
+  <section id="exoplismos" class="calc">
+    <div class="wrap calc-grid">
+      <div>
+        <span class="eyebrow">Εξοπλισμός</span>
+        <h2 style="margin-top:.9rem">Η μπάρα και οι δίσκοι</h2>
+        <p class="lede" style="margin-top:.9rem">Η ανδρική μπάρα ζυγίζει 20 κ. και η γυναικεία 15 κ. Στους αγώνες κάθε πλευρά κλείνει με κολάρο 2,5 κ. Κάθε δίσκος έχει το δικό του χρώμα, ώστε κριτές και θεατές να βλέπουν αμέσως το βάρος.</p>
+        <div class="plates-legend" style="margin-top:1.2rem">
+          {plates.map((p) => <span style={`background:var(${p.c});${p.light ? 'color:#fff' : ''}`}>{p.kg} κ.</span>)}
+        </div>
+        <div class="calc-form">
+          <div class="field">
+            <label for="target">Δοκιμάστε: συνολικό βάρος</label>
+            <div class="kg-input"><input id="target" type="number" inputmode="decimal" min="15" max="400" step="0.5" value="102"><span>κ.</span></div>
+            <div class="steps" role="group" aria-label="Αλλαγή βάρους">
+              <button type="button" data-step="-5">−5</button><button type="button" data-step="-1">−1</button><button type="button" data-step="1">+1</button><button type="button" data-step="5">+5</button>
+            </div>
+          </div>
+          <fieldset>
+            <legend>Μπάρα</legend>
+            <div class="seg">
+              <label><input type="radio" name="bar" id="bar20" value="20" checked><span>20 κ. ανδρική</span></label>
+              <label><input type="radio" name="bar" id="bar15" value="15"><span>15 κ. γυναικεία</span></label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="calc-out">
+        <div class="bar-stage"><div class="barbell" id="calcBar" role="img" aria-label="Φορτωμένη μπάρα"></div></div>
+        <p class="per-side" id="perSide" aria-live="polite"></p>
+        <div class="chips" id="chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="istoria">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="stripe" aria-hidden="true"></div>
+        <h2>Η Ελλάδα και η άρση βαρών</h2>
+      </div>
+      <ol class="timeline">
+        <li><b>6ος αι. π.Χ.</b><p>Στην Ολυμπία βρέθηκε η πέτρα του Βύβωνα, βάρους 143 κιλών. Η επιγραφή της λέει ότι ο Βύβων τη σήκωσε πάνω από το κεφάλι του με το ένα χέρι.</p></li>
+        <li><b>Αρχαιότητα</b><p>Ο Μίλων ο Κροτωνιάτης, πολλές φορές ολυμπιονίκης, έγινε θρύλος της δύναμης. Η παράδοση λέει ότι σήκωνε κάθε μέρα ένα μοσχάρι που μεγάλωνε, μέχρι να γίνει ταύρος.</p></li>
+        <li><b>1896</b><p>Η άρση βαρών ήταν ένα από τα αθλήματα των πρώτων σύγχρονων Ολυμπιακών Αγώνων, στην Αθήνα.</p></li>
+        <li><b>1992 – 2004</b><p>Ο Πύρρος Δήμας κέρδισε τρία συνεχόμενα ολυμπιακά χρυσά (Βαρκελώνη, Ατλάντα, Σίδνεϊ) και χάλκινο στην Αθήνα. Ο Κακί Κακιασβίλι πήρε χρυσό με την Ελλάδα στην Ατλάντα και στο Σίδνεϊ. Η άρση βαρών έγινε ένα από τα πιο αγαπημένα αθλήματα στη χώρα.</p></li>
+      </ol>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // IWF plate colours; bumpers 10–25 kg are full diameter, change plates are smaller.
+  const PLATES = [
+    { kg: 25, c: '--p-red', h: 100, w: 22 }, { kg: 20, c: '--p-blue', h: 100, w: 19 },
+    { kg: 15, c: '--p-yellow', h: 100, w: 15 }, { kg: 10, c: '--p-green', h: 100, w: 12 },
+    { kg: 5, c: '--p-white', h: 50, w: 10 }, { kg: 2.5, c: '--p-red', h: 42, w: 8 },
+    { kg: 2, c: '--p-blue', h: 38, w: 7 }, { kg: 1.5, c: '--p-yellow', h: 34, w: 7 },
+    { kg: 1, c: '--p-green', h: 30, w: 6 }, { kg: 0.5, c: '--p-white', h: 26, w: 5 },
+  ];
+  const COLLAR = 2.5;
+  type Plate = (typeof PLATES)[number];
+  const kg = (n: number) => String(+n.toFixed(2)).replace('.', ',');
+
+  function platesFor(perSide: number) {
+    const out: Plate[] = [];
+    let rest = Math.round(perSide * 10) / 10;
+    for (const p of PLATES) {
+      while (rest >= p.kg - 1e-9) {
+        out.push(p);
+        rest = Math.round((rest - p.kg) * 10) / 10;
+      }
+    }
+    return { plates: out, leftover: rest };
+  }
+
+  function drawBar(el: HTMLElement, plates: Plate[], maxH: number) {
+    const sleeve = (side: string) => {
+      const s = document.createElement('div');
+      s.className = 'sleeve ' + side;
+      plates.forEach((p, i) => {
+        const d = document.createElement('div');
+        d.className = 'plate';
+        d.style.height = (p.h / 100) * maxH + 'px';
+        d.style.width = p.w + 'px';
+        d.style.background = `var(${p.c})`;
+        d.style.animationDelay = i * 40 + 'ms';
+        s.appendChild(d);
+      });
+      for (const cls of ['collar', 'sleeve-end']) {
+        const d = document.createElement('div');
+        d.className = cls;
+        s.appendChild(d);
+      }
+      return s;
+    };
+    el.replaceChildren(sleeve('left'), Object.assign(document.createElement('div'), { className: 'shaft' }), sleeve('right'));
+  }
+
+  const target = document.getElementById('target') as HTMLInputElement;
+  const perSideEl = document.getElementById('perSide')!;
+  const chips = document.getElementById('chips')!;
+  const calcBar = document.getElementById('calcBar')!;
+
+  function update() {
+    const bar = parseFloat((document.querySelector('input[name="bar"]:checked') as HTMLInputElement).value);
+    const total = parseFloat(target.value.replace(',', '.'));
+    chips.replaceChildren();
+    const fixed = bar + COLLAR * 2;
+    if (!isFinite(total) || total < fixed) {
+      perSideEl.innerHTML = `Η μπάρα με τα κολάρα ζυγίζει <b>${kg(fixed)} κ.</b> Γράψτε τουλάχιστον τόσο.`;
+      drawBar(calcBar, [], 200);
+      return;
+    }
+    const perSide = (total - fixed) / 2;
+    const { plates, leftover } = platesFor(perSide);
+    let msg = `Σε κάθε πλευρά: <b>${kg(perSide)} κ.</b>`;
+    if (leftover > 0) msg += ` · Τα ${kg(leftover * 2)} κ. που περισσεύουν δεν φορτώνονται με δίσκους 0,5 κ.`;
+    perSideEl.innerHTML = msg;
+    for (const p of plates) {
+      const c = document.createElement('span');
+      c.className = 'chip';
+      c.textContent = kg(p.kg) + ' κ.';
+      c.style.background = `var(${p.c})`;
+      if (['--p-blue', '--p-red', '--p-green'].includes(p.c)) c.style.color = '#fff';
+      chips.appendChild(c);
+    }
+    calcBar.setAttribute('aria-label', `Μπάρα ${kg(total)} κιλών: ${plates.map((p) => kg(p.kg)).join(', ') || 'χωρίς δίσκους'} σε κάθε πλευρά`);
+    drawBar(calcBar, plates, 200);
+  }
+
+  target.addEventListener('input', update);
+  document.querySelectorAll('input[name="bar"]').forEach((r) => r.addEventListener('change', update));
+  document.querySelectorAll<HTMLButtonElement>('[data-step]').forEach((b) =>
+    b.addEventListener('click', () => {
+      target.value = String(Math.max(0, (parseFloat(target.value) || 0) + parseFloat(b.dataset.step!)));
+      update();
+    }),
+  );
+  update();
+</script>

@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import club from '../data/club.json';
+import schedule from '../data/schedule.json';
+---
+<Layout title="Επικοινωνία" description={`Διεύθυνση, τηλέφωνο και ώρες προπόνησης του τμήματος άρσης βαρών του ${club.name}.`}>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Επικοινωνία</span>
+      <h1>Πού θα μας βρείτε</h1>
+      <p>Για πληροφορίες σχετικά με το τμήμα, επικοινωνήστε μαζί μας ή περάστε από το γυμναστήριο σε ώρες προπόνησης.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap contact-grid">
+      <dl class="contact-list">
+        <div><dt>Διεύθυνση</dt><dd>{club.address}{club.mapLink && <> · <a href={club.mapLink} target="_blank" rel="noopener">Χάρτης ↗</a></>}</dd></div>
+        {club.venue && <div><dt>Χώρος προπόνησης</dt><dd>{club.venue}</dd></div>}
+        <div><dt>Τηλέφωνο</dt><dd><a href={`tel:+30${club.phone.replace(/\s/g, '')}`}>{club.phone}</a></dd></div>
+        {club.email && <div><dt>Email</dt><dd><a href={`mailto:${club.email}`}>{club.email}</a></dd></div>}
+        {club.facebook && <div><dt>Facebook</dt><dd><a href={club.facebook} target="_blank" rel="noopener">Σελίδα Facebook ↗</a></dd></div>}
+        {club.instagram && <div><dt>Instagram</dt><dd><a href={club.instagram} target="_blank" rel="noopener">Instagram ↗</a></dd></div>}
+        <div><dt>Σύλλογος</dt><dd><a href={club.mainSite} target="_blank" rel="noopener">{club.mainSite.replace(/^https?:\/\//, '')} ↗</a></dd></div>
+      </dl>
+      <div>
+        <div class="section-head" style="margin-bottom:1.2rem">
+          <div class="stripe" aria-hidden="true"></div>
+          <h2>Ώρες προπόνησης</h2>
+        </div>
+        <div class="sched">
+          <table>
+            <thead><tr><th>Τμήμα</th><th>Ημέρες</th><th>Ώρα</th></tr></thead>
+            <tbody>
+              {schedule.rows.map((r) => <tr><td>{r.group}</td><td>{r.days}</td><td class="time">{r.time}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        {schedule.note && <p class="placeholder-note" style="margin-top:1rem">{schedule.note}</p>}
+      </div>
+    </div>
+  </section>
+</Layout>
