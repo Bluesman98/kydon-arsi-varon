@@ -2,6 +2,7 @@
 name: Κωνσταντίνος Κλωθάκης
 category: Παίδες
 weightClass: "95"
+photo: /uploads/ArsiVaron-10.jpg
 snatch: 130
 cleanJerk: 150
 order: 1
